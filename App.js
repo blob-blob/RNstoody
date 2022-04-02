@@ -13,15 +13,13 @@ class App extends Component {
     // render 함수 밖에 선언.
     state = {
         sampleText: 'hello world',
+        sampleBoolean: false,
     };
 
+    intputText = () => (this.state.sampleBoolean ? <Text>sampleBoolean is true</Text> : <Text>sampleBoolean is false</Text>);
+
     render() {
-        return (
-            <View style={styles.background}>
-                <Text>{this.state.sampleText}</Text>
-                {/* 여기서 this는 자스문법. 상위스코프를 가리킴 */}
-            </View>
-        );
+        return <View style={styles.background}>{this.intputText()}</View>;
     }
 }
 
