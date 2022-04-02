@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 /**
  * react 모듈에서 Component import.
@@ -9,11 +9,20 @@ import { View, Text } from 'react-native';
 class App extends Component {
     render() {
         return (
-            <View>
+            <View style={styles.background}>
                 <Text>hello world</Text>
             </View>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    background: {
+        flex: 1,
+        backgroundColor: 'fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+});
 
 export default App;
