@@ -10,8 +10,21 @@ class App extends Component {
     };
 
     onAddRandomNum = () => {
-        // eslint-disable-next-line no-alert
-        alert('add random number!!');
+        const randomNum = Math.floor(Math.random() * 100) + 1;
+        this.setState(prevState => {
+            return {
+                random: [...prevState.random, randomNum],
+            };
+        });
+    };
+
+    onNumDelete = position => {
+        const newArray = this.state.random.filter((num, index) => {
+            return position != index;
+        });
+        this.setState({
+            random: newArray,
+        });
     };
 
     render() {
@@ -22,7 +35,7 @@ class App extends Component {
                     <Text style={styles.mainText}>hello world</Text>
                 </View>
                 <Generator add={this.onAddRandomNum} />
-                <NumList num={this.state.random} />
+                <NumList num={this.state.random} delete={this.onNumDelete} />
             </View>
         );
     }
