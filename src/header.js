@@ -37,7 +37,7 @@ const Header = props => (
 
 const styles = StyleSheet.create({
     header: {
-        flex: 1,
+        // flex: 1,
         backgroundColor: 'pink',
         alignItems: 'center',
         padding: 5,
