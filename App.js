@@ -11,6 +11,8 @@ import Header from './src/header';
 import Generator from './src/generator';
 import NumList from './src/numlist';
 import Input from './src/input';
+import PickerComponent from './src/picker';
+
 class App extends Component {
     state = {
         myTextInput: '',
@@ -34,6 +36,7 @@ class App extends Component {
     render() {
         return (
             <View style={styles.mainView}>
+                <PickerComponent />
                 <TextInput
                     value={this.state.myTextInput}
                     style={styles.input}
