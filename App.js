@@ -1,41 +1,32 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import PropsChild from './main/propsChild';
 class App extends Component {
-    state = {
-        sampleText: 'hello world',
-        sampleBoolean: false,
-        sampleNum: 1,
-    };
-
-    intputText = () => (this.state.sampleBoolean ? <Text>sampleBoolean is true</Text> : <Text>sampleBoolean is false</Text>);
-
-    changeState = () => {
-        if (!this.state.sampleBoolean) {
-            this.setState({
-                sampleText: 'Text Changed!!!',
-                sampleBoolean: true,
-            });
-        } else {
-            this.setState({
-                sampleText: 'hello world!!!',
-                sampleBoolean: false,
-            });
-        }
-    };
-
-    onAdd = () => {
-        this.setState(prevState => {
-            return {
-                sampleNum: prevState.sampleNum + 1,
-            };
-        });
-    };
-
     render() {
         return (
+            // 화면에 출력하기 위해서는 뷰 컴포넌트로 감싸져있어야 함.
+            // 인라인 스타일 or 따로 빼서 하는 스타일
             <View style={styles.background}>
-                <PropsChild sText={this.state.sampleText} cState={this.changeState} />
+                <View
+                    // eslint-disable-next-line react-native/no-inline-styles
+                    style={{
+                        backgroundColor: 'green',
+                        // marginTop: 50,
+                        paddingTop: 50,
+                    }}>
+                    <Text>hello world</Text>
+                </View>
+                <View
+                    // eslint-disable-next-line react-native/no-inline-styles
+                    style={{
+                        backgroundColor: 'green',
+                        marginTop: 50,
+                        // paddingTop: 50,
+                    }}>
+                    <Text>hello world</Text>
+                </View>
+                <View>
+                    <Text>hello world</Text>
+                </View>
             </View>
         );
     }
@@ -46,7 +37,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'fff',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'center', // 수직정렬
     },
 });
 
