@@ -38,7 +38,16 @@ class App extends Component {
     render() {
         return (
             <View style={styles.mainView}>
-                <Image style={styles.image} source={Cat} resizeMode="contain" />
+                <Image
+                    style={styles.image}
+                    source={{
+                        uri: 'https://picsum.photos/id/237/200/300',
+                    }}
+                    resizeMode="contain"
+                    onLoadEnd={() => {
+                        alert('imgae loaded');
+                    }}
+                />
             </View>
         );
     }
