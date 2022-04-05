@@ -6,12 +6,14 @@ import {
     Button,
     TextInput,
     ScrollView,
+    Image,
 } from 'react-native';
 import Header from './src/header';
 import Generator from './src/generator';
 import NumList from './src/numlist';
 import Input from './src/input';
 import PickerComponent from './src/picker';
+import Cat from './assets/images/cat1.jpeg';
 
 class App extends Component {
     state = {
@@ -36,24 +38,7 @@ class App extends Component {
     render() {
         return (
             <View style={styles.mainView}>
-                <PickerComponent />
-                {/* <TextInput
-                    value={this.state.myTextInput}
-                    style={styles.input}
-                    onChangeText={this.onChangeInput}
-                    multiline={true}
-                    maxLength={100}
-                    autoCapitalize={'none'}
-                    editable={true}
-                />
-                <Button title="ADD text input" onPress={this.onAddTextInput} />
-                <ScrollView style={{ width: '100%' }}>
-                    {this.state.alphabet.map((item, idx) => (
-                        <Text style={styles.mainText} key={idx}>
-                            {item}
-                        </Text>
-                    ))}
-                </ScrollView> */}
+                <Image style={styles.image} source={Cat} resizeMode="contain" />
             </View>
         );
     }
@@ -84,6 +69,10 @@ const styles = StyleSheet.create({
         backgroundColor: 'grey',
         marginTop: 20,
         padding: 10,
+    },
+    image: {
+        width: '100%',
+        height: 700,
     },
 });
 
