@@ -37,7 +37,7 @@ class App extends Component {
         return (
             <View style={styles.mainView}>
                 <PickerComponent />
-                <TextInput
+                {/* <TextInput
                     value={this.state.myTextInput}
                     style={styles.input}
                     onChangeText={this.onChangeInput}
@@ -53,7 +53,7 @@ class App extends Component {
                             {item}
                         </Text>
                     ))}
-                </ScrollView>
+                </ScrollView> */}
             </View>
         );
     }
