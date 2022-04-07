@@ -33,7 +33,7 @@ const AppTabComponent = () => {
 
 export const RootNavigator = () => {
     return (
-        <AuthStack.Navigator>
+        <AuthStack.Navigator screenOptions={{ headerShown: false }}>
             {isLogggedIn ? (
                 <AuthStack.Screen name="Main" component={AppTabComponent} />
             ) : (
