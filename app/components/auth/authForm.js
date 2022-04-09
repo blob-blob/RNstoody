@@ -3,14 +3,15 @@ import { View, Text, StyleSheet, TextInput } from 'react-native';
 import Input from '../../utils/forms/input';
 class AuthForm extends Component {
     state = {
-        type: 'Login',
+        type: 'Register',
+        // type: 'Login',
         action: 'Login',
         actionMode: '새로 등록할게요',
-        hasErrors: false,
+        hasErrors: true,
         form: {
             email: {
                 value: '',
-                type: 'textInputReviesed',
+                type: 'textInput',
                 rules: {},
                 valid: false,
             },
@@ -40,6 +41,30 @@ class AuthForm extends Component {
             form: formCopy,
         });
     };
+    confirmPassword = () =>
+        this.state.type != 'Login' ? (
+            <Input
+                value={this.state.form.confirmPassword.value}
+                type={this.state.form.confirmPassword.type} //input의 속성은 아님
+                secureTextEntry={true}
+                placeholder="비밀번호 재입력"
+                placeholderTextColor="#ddd"
+                onChangeText={value =>
+                    this.updateInput('confirmPassword', value)
+                }
+            />
+        ) : null;
+
+    formHasErrors = () =>
+        this.state.hasErrors ? (
+            <View>
+                <Text style={styles.errorContainer}>
+                    <Text style={styles.errorLabel}>
+                        로그인 정보를 다시 입력해주세요!
+                    </Text>
+                </Text>
+            </View>
+        ) : null;
 
     render() {
         return (
@@ -62,9 +87,30 @@ class AuthForm extends Component {
                     placeholderTextColor="#ddd"
                     onChangeText={value => this.updateInput('password', value)}
                 />
+
+                {this.confirmPassword()}
+
+                {this.formHasErrors()}
             </View>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    errorContainer: {
+        marginBottom: 10,
+        marginTop: 30,
+        padding: 15,
+        backgroundColor: '#ee3344',
+        textAlignVertical: 'center',
+        textAlign: 'center',
+    },
+
+    errorLabel: {
+        color: '#fff',
+        fontSize: 12,
+        fontWeight: 'bold',
+    },
+});
 
 export default AuthForm;
