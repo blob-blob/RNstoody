@@ -29,6 +29,18 @@ class AuthForm extends Component {
         },
     };
 
+    updateInput = (name, value) => {
+        this.setState({
+            hasErrors: false,
+        });
+        let formCopy = this.state.form;
+        formCopy[name].value = value;
+
+        this.setState({
+            form: formCopy,
+        });
+    };
+
     render() {
         return (
             <View>
@@ -39,6 +51,7 @@ class AuthForm extends Component {
                     keyboardType={'email-address'}
                     placeholder="이메일 주소"
                     placeholderTextColor="#ddd"
+                    onChangeText={value => this.updateInput('email', value)}
                 />
 
                 <Input
@@ -47,6 +60,7 @@ class AuthForm extends Component {
                     secureTextEntry={true}
                     placeholder="비밀번호"
                     placeholderTextColor="#ddd"
+                    onChangeText={value => this.updateInput('password', value)}
                 />
             </View>
         );
