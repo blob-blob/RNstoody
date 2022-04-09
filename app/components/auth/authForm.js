@@ -10,10 +10,10 @@ import {
 import Input from '../../utils/forms/input';
 class AuthForm extends Component {
     state = {
-        // type: 'Register',
-        type: 'Login',
-        action: 'Login',
-        actionMode: '새로 등록할게요',
+        // type: 'Register', // 로그인 / 등록
+        type: '로그인', // 로그인 / 등록
+        action: '로그인', // 회원가입 / 로그인
+        actionMode: '회원가입', // 회원가입 / 로그인
         hasErrors: false,
         form: {
             email: {
@@ -49,7 +49,7 @@ class AuthForm extends Component {
         });
     };
     confirmPassword = () =>
-        this.state.type != 'Login' ? (
+        this.state.type != '로그인' ? (
             <Input
                 value={this.state.form.confirmPassword.value}
                 type={this.state.form.confirmPassword.type} //input의 속성은 아님
@@ -72,6 +72,16 @@ class AuthForm extends Component {
                 </Text>
             </View>
         ) : null;
+
+    changeForm = () => {
+        const type = this.state.type;
+
+        this.setState({
+            type: type === '로그인' ? '등록' : '로그인',
+            action: type === '로그인' ? '등록' : '로그인',
+            actionMode: type === '로그인' ? '로그인 화면으로' : '회원가입',
+        });
+    };
 
     render() {
         return (
@@ -105,7 +115,11 @@ class AuthForm extends Component {
                     </View>
 
                     <View style={styles.button}>
-                        <Button title={this.state.actionMode} color="#48567f" />
+                        <Button
+                            title={this.state.actionMode}
+                            color="#48567f"
+                            onPress={() => this.changeForm()}
+                        />
                     </View>
 
                     <View style={styles.button}>
