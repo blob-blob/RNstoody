@@ -8,6 +8,7 @@ import {
     Platform,
 } from 'react-native';
 import Input from '../../utils/forms/input';
+import ValidationRules from '../../utils/forms/validationRules';
 class AuthForm extends Component {
     state = {
         // type: 'Register', // 로그인 / 등록
@@ -19,19 +20,27 @@ class AuthForm extends Component {
             email: {
                 value: '',
                 type: 'textInput',
-                rules: {},
+                rules: {
+                    isRequired: true,
+                    isEmail: true,
+                },
                 valid: false,
             },
             password: {
                 value: '',
                 type: 'textInput',
-                rules: {},
+                rules: {
+                    isRequired: true,
+                    minLength: 6,
+                },
                 valid: false,
             },
             confirmPassword: {
                 value: '',
                 type: 'textInput',
-                rules: {},
+                rules: {
+                    confirmPassword: 'password',
+                },
                 valid: false,
             },
         },
@@ -43,6 +52,11 @@ class AuthForm extends Component {
         });
         let formCopy = this.state.form;
         formCopy[name].value = value;
+
+        // rules
+        let rules = formCopy[name].rules;
+        let valid = ValidationRules(value, rules, formCopy);
+        formCopy[name].valid = valid;
 
         this.setState({
             form: formCopy,
